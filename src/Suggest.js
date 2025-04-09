@@ -1,12 +1,12 @@
 export const SuggestSeats = (seatCount, seats) => {
+    let order = [2, 1, 3, 0, 4];
     
-    
-    for (let row of seats) {
-        if (rowAvailible(seatCount, row)) {
+    for (let i of order) {
+        if (rowAvailible(seatCount, seats[i])) {
             let set = new Set();
-            const first = firstAvailibleIndex(row);
-            for (let i = 0; i < seatCount; i++) {
-                set.add(row[first + i].id);
+            const first = firstAvailibleIndex(seats[i]);
+            for (let j = 0; j < seatCount; j++) {
+                set.add(seats[i][first + j].id);
             }
 
             return set;
